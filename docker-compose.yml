@@ -1,0 +1,13 @@
+services:
+    nginx:
+      build: .
+      ports:
+        - "8080:8080"
+      develop:
+        watch:
+          - action: sync
+            path: ./website/index.html
+            target: /website/index.html
+          - action: sync+restart
+            path: ./nginx.conf
+            target: /etc/nginx/nginx.conf
